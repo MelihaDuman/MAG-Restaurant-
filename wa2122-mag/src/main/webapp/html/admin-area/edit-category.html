@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Order</title>
+    <link rel="stylesheet" href="../../css/template.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/edit-order.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <div class="h1 bg-dark text-white p-3">
+                <h1>Admin Page</h1>
+            </div>
+            <div class="h2 pt-5" style="text-align: left">
+                <h2> Edit Category</h2>
+
+            </div>
+        </div>
+
+
+        <div class="categoryForm">
+            <div class="formdata">
+
+                <form onsubmit="event.preventDefault();" autocomplete="off">
+
+
+                    <label>Name</label>
+                    <input type="text" class="categoryName" value=""  placeholder="Category Name">
+
+                    <label>Description</label>
+                    <input type="text" class="description" value=""  placeholder="Description">
+
+
+
+                    <div style="width:100%">
+                        <input type="submit"  value="Add"  class="button">
+
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="display_table">
+                <table class="list" id="employeeList">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Category Name</th>
+
+                        <th>Description</th>
+
+
+                        <th>Edit</th>
+                    </tr>
+                    <tr>
+
+                        <td>1</td>
+                        <td>Sushi</td>
+                        <td>Sushi Descrip</td>
+                        <td>Edit/Delete</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            Pizza
+                        </td>
+                        <td>Pizza Desc</td>
+                        <td>Edit/Delete</td>
+                    </tr>
+
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+</div>
+
+
+
+
+
+
+
+</form>
+
+</div>
+</div>
+
+
+<style>
+    .categoryForm{
+        display: flex;
+        width: 1000px;
+        flex-wrap: wrap;
+        margin: auto;
+        font-family: verdana;
+        font-size: 16px;
+        border: solid 2px #f1f1f1;
+    }
+    .categoryForm .formdata{
+        width:40%;
+        padding:15px;
+    }
+    .categoryForm .display_table {
+        padding:15px;
+        width:52%;
+    }
+    .categoryForm .display_table table{
+        border:solid 1px #ccc;
+    }
+    .categoryForm .display_table td,
+    .categoryForm .display_table th{
+        border-left:solid 1px #ccc;
+        border-bottom:solid 1px #ccc;
+        padding:10px 5px;
+        text-align:left;
+        font-size:13px;
+    }
+    .categoryForm .display_table td:first-child,
+    .categoryForm .display_table th:first-child{
+        border-left:none;
+    }
+
+    .categoryForm .display_table tr{
+        border-bottom:solid 1px #ccc;
+    }
+    .categoryForm .display_table tr:last-child td{
+        border-bottom:none;
+    }
+
+    .formdata form{
+        display:flex;
+        flex-wrap:wrap;
+        background:#f1f1f1;
+        padding:15px;
+    }
+    .formdata form label{
+        width:100px;
+    }
+    .formdata form input, .formdata label{
+        margin:10px 0;
+        padding:5px;
+    }
+    .formdata form input{
+        width:200px;
+        padding:7px;
+    }
+    .formdata th{
+        background:#f1f1f1;
+        font-size:14px;
+        font-weight:bold;
+        text-align:left;
+    }
+    .formdata .button{
+        background:#000;
+        padding:5px 10px;
+        font-size:20px;
+        margin:25px auto;
+        display:table;
+        color:#fff;
+    }
+</style>
+
+
+</body>
+<script>
+
+    var selectedRow = null;
+    var btn = document.querySelector(".button")
+    btn.addEventListener("click", employdata);
+
+
+    function employdata(){
+        var ax = read_Input_Value();
+        if (selectedRow == null){
+            create_Tr_Td(ax);
+            remove_input_value()
+        }
+        else{
+            updatefunc(ax);
+            remove_input_value();
+            selectedRow = null;
+        }
+
+    }
+
+    function read_Input_Value(){
+        var redemp={}
+        redemp["ename"] = document.querySelector(".categoryName").value;
+        redemp["des"] = document.querySelector(".description").value;
+
+        return redemp
+    }ß
+    function create_Tr_Td(x){
+        var empTable = document.querySelector(".list");
+        var emp_tr = empTable.insertRow(empTable.length);
+        var emp_td1 = emp_tr.insertCell(0);
+        var emp_td2 = emp_tr.insertCell(1);
+        var emp_td3 = emp_tr.insertCell(2);
+
+        var emp_td6 = emp_tr.insertCell(3);
+        var totalRowCount = document.querySelector(".list tr").length;
+        emp_td1.innerHTML = empTable.rows.length-1;
+        //Note:- .rows.length = return no of row
+
+        emp_td2.innerHTML = x.ename;
+        emp_td3.innerHTML = x.des;
+
+
+        emp_td6.innerHTML = '<a class="edt" onClick="onEdit(this)">Edit</a>  / <a class="dlt" onClick="onDelete(this)">Delete</a>';
+    }
+
+    function remove_input_value(){
+        document.querySelector(".categoryName").value= " ";
+        document.querySelector(".description").value= " ";
+
+    }
+
+    function onEdit(y){
+        console.log(y);
+
+        //var selecteventbtn = document.querySelector("a.edt");
+        selectedRow = y.parentElement.parentElement;
+        //document.querySelector(".empid").value = selectedRow.cells[0].innerHTML;
+        document.querySelector(".categoryName").value = selectedRow.cells[1].innerHTML;
+        document.querySelector(".description").value = selectedRow.cells[2].innerHTML;
+
+    }
+
+    function updatefunc(redemp){
+        selectedRow.cells[1].innerHTML = redemp.ename;
+        selectedRow.cells[2].innerHTML = redemp.des;
+
+
+    }
+
+
+    function onDelete() {
+        if (confirm('Are you sure to delete this record ?')) {
+            var selectdelete = document.querySelector("a.dlt");
+            selectdelete = selectdelete.parentElement.parentElement.remove(0);
+        }
+    }
+
+
+</script>
+
+</html>

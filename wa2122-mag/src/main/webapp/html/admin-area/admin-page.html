@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Area</title>
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/admin-page.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"> </script>
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            font-family: 'Josefin Sans', sans-serif;
+
+        }
+
+        body{
+            background: #ffffff ;
+        }
+        .wrapper{
+
+            display: flex;
+            position: relative;
+        }
+        .wrapper .sidebar{
+
+            position: fixed;
+            width: 200px;
+            height: 100px;
+            background: #F5F5DC;
+            padding: 30px 0;
+        }
+
+
+        .wrapper .sidebar h2{
+
+            color: #070707;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 30px;
+
+        }
+
+        .wrapper .sidebar ul li{
+            padding: 15px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-top: 1px solid rgba(225,225,225,0.05);
+        }
+
+        .wrapper .sidebar ul li a {
+            color: #bdb8d7;
+            display: block;
+
+        }
+        .wrapper .sidebarul li a .fas{
+
+            width: 25px;
+
+        }
+
+        .wrapper .sidebar ul li:hover{
+            background: #222223;
+        }
+
+        .wrapper .sidebar ul li:hover a {
+            color: #fff;
+
+        }
+        .wrapper .sidebar ul li:hover i{
+            color: #fff;
+        }
+        .wrapper .sidebar ul li i {
+            color: #181717;
+            display: block;
+
+        }
+
+        .wrapper .sidebar .social_media{
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+
+        }
+
+        .wrapper .sidebar .social_media a{
+            display: block;
+            width: 40px;
+            background: #665f8d;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            margin: 0 5px;
+            color: #bdb8d7;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+
+
+        }
+        .wrapper .main_content{
+            width: 100%;
+            margin-left: 200px;
+
+        }
+
+        .wrapper .main_content .header{
+            padding: 20px;
+            background: #fff;
+            color: #717171;
+            border-bottom: 1px solid #e0e;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="sidebar">
+        <h2>Admin Menu</h2>
+        <ul>
+            <li>
+                <i class="fas fa-home" onclick="window.history.back()">Home</i>
+                </li>
+            <li><a href="edit-user.html"><i class="fas fa-user"></i>Users</a></li>
+            <li><a href="edit-product.html.html"><i class="fas fa-address-card"></i>Products</a></li>
+            <li><a href="edit-category.html"><i class="fas fa-search"> Category</i></a></li>
+            <li><a href="${pageContext.request.contextPath}/user/logout"><i class="fas fa-user"> Logout</i></a></li>
+        </ul>
+        <div class="social_media">
+
+            <a href="#"> <i class="fab fa-facebook-f"></i></a>
+            <a href="#"> <i class="fab fa-twitter"></i></a>
+            <a href="#"> <i class="fab fa-instagram"></i></a>
+
+        </div>
+    </div>
+<div class="main_content">
+
+
+    <script>
+
+        const data = {
+            labels: generateLabels(),
+            datasets: [
+                {
+                    label: 'Dataset',
+                    data: generateData(),
+                    borderColor: Utils.CHART_COLORS.red,
+                    backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red),
+                    fill: false
+                }
+            ]
+        };
+
+
+
+
+    </script>
+
+
+
+
+
+
+    <div class="info">
+        <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </div>
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
